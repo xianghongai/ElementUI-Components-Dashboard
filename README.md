@@ -4,8 +4,10 @@
 
 ## 安装/Install
 
-- [Tampermonkey](https://www.tampermonkey.net/)
-- [Greasy Fork: Element UI Components Dashboard (^2.0.0)](https://greasyfork.org/zh-CN/scripts/402382-element-ui-components-dashboard-2-0-0)
+- 浏览器安装扩展 [Tampermonkey](https://www.tampermonkey.net/)
+- 扩展中安装脚本 [Greasy Fork: Element UI Components Dashboard (^2.0.0)](https://greasyfork.org/zh-CN/scripts/402382-element-ui-components-dashboard-2-0-0)
+
+之后访问 [Element](https://element.eleme.cn/#/zh-CN/component) 官网体验。
 
 ## Screenshots
 

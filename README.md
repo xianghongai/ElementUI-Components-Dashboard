@@ -11,12 +11,14 @@
 
 ## Screenshots
 
-![Element Ui Components Dashboard V2 Light](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-light.png)
+![无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-light.png)
 
-![Element Ui Components Dashboard V2 Dark](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-dark.png)
+![无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-dark.png)
+
+预览回滚：[light](https://i.loli.net/2020/07/24/qlsOUZ3GhHtyxpd.png), [dark](https://i.loli.net/2020/07/24/Q1CeA9SNq5TknmU.png)
 
 ---
 
-**Donate**
+**[Donate](https://i.loli.net/2020/07/24/fO2yerxqXFuZV5L.png)**
 
 ![](https://raw.githubusercontent.com/caringrun/assets/master/donate.png)

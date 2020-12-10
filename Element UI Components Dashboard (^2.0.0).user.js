@@ -17,7 +17,9 @@
   const titleText = "Element UI";
 
   const gridSelector = ".side-nav .nav-item:nth-last-child(1) .nav-group"; // 菜单所在的 DOM Selector
-  const girdIsList = true; // 如果提取的是一个 Node 数组
+  const girdIsList = true; // 如果提取的是一个 Node 数组，即一次提取所有菜单 DOM 列表，没有父层 DOM
+  
+  // 以下选择器，在生成自定义 containerEle 之后用，不参与原始站点查询
   const columnSelector = ".nav-group";
   const columnTitleSelector = ".nav-group__title";
   const menuListSelector = ".pure-menu-list";

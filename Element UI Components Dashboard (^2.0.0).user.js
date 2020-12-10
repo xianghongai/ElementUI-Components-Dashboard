@@ -16,7 +16,7 @@
   // #region
   const titleText = "Element UI";
 
-  const gridSelector = ".side-nav .nav-item:nth-last-child(1) .nav-group";
+  const gridSelector = ".side-nav .nav-item:nth-last-child(1) .nav-group"; // 菜单所在的 DOM Selector
   const girdIsList = true; // 如果提取的是一个 Node 数组
   const columnSelector = ".nav-group";
   const columnTitleSelector = ".nav-group__title";

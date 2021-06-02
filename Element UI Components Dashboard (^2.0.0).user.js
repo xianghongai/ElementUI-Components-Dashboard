@@ -2,7 +2,7 @@
 // @name:zh-CN   Element UI 组件看板 (^2.0.0)
 // @name         Element UI Components Dashboard (^2.0.0)
 // @namespace    https://github.com/xianghongai/ElementUI-Components-Dashboard
-// @version      0.0.1
+// @version      0.0.2
 // @description:zh-CN  更方便的查看 Element UI 组件
 // @description  Better view for Element UI
 // @author       Nicholas Hsiang / 山茶树和葡萄树

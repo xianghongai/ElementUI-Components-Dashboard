@@ -1,10 +1,8 @@
 // ==UserScript==
-// @name:zh-CN   Element UI 组件看板 (^2.0.0)
-// @name         Element UI Components Dashboard (^2.0.0)
+// @name         Element UI Components Dashboard (^2.0.0) / Element UI 组件看板
 // @namespace    https://github.com/xianghongai/ElementUI-Components-Dashboard
-// @version      0.0.2
-// @description:zh-CN  更方便的查看 Element UI 组件
-// @description  Better view for Element UI
+// @version      0.0.3
+// @description  Better view for Element UI (更方便的查看 Element UI 组件)
 // @author       Nicholas Hsiang / 山茶树和葡萄树
 // @icon         https://xinlu.ink/favicon.ico
 // @match        https://element.eleme.cn/*
@@ -19,7 +17,7 @@
 
   const gridSelector = ".side-nav .nav-item:nth-last-child(1) .nav-group"; // 菜单所在的 DOM Selector
   const girdIsList = true; // 如果提取的是一个 Node 数组，即一次提取所有菜单 DOM 列表，没有父层 DOM
-  
+
   // 以下选择器，在生成自定义 containerEle 之后用，不参与原始站点查询
   const columnSelector = ".nav-group";
   const columnTitleSelector = ".nav-group__title";
@@ -314,7 +312,10 @@
       themeSwitchForm = document.querySelector(".hs-theme-switch__form-control");
     }
 
-    bodyContainer.addEventListener("click", (event) => {
+    const toggleMenuBtn = document.querySelector('.hs-dashboard__toggle-menu');
+    const toggleHelpBtn = document.querySelector('.hs-dashboard__toggle-help');
+
+    function handler(event) {
       const targetEle = event.target;
 
       const itemEle = getParents(targetEle, ".hs-dashboard__item");
@@ -344,7 +345,25 @@
       } else if (isTheme) {
         handleTheme();
       }
-    });
+    }
+
+    bodyContainer.addEventListener("click", handler);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Tab' || event.code === 'Tab') {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleMenuBtn?.click();
+      }
+      // else if (event.key === 'Escape' || event.code === 'Escape') {
+      //   toggleMenuBtn.click();
+      // }
+      else if (event.key === 'F1' || event.code === 'F1') {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleHelpBtn?.click();
+      }
+  });
   }
 
   /** 导航点击 */
@@ -440,14 +459,14 @@
   /** 样式表 */
   function initialStyleTpl() {
     return `
-  
+
     :root {
       --item-height: 36px;
       --hs-font-size-base: 15px;
       --hs-global-spacing: 1rem;
       --hs-color-primary: #1890ff;
       --hs-spacing-horizontal: var(--hs-global-spacing);
-  
+
       --hs-color-white: #fff;
       --hs-color-black: #000;
       --hs-color-gray-0: var(--hs-color-white);
@@ -476,12 +495,12 @@
     .hs-hide {
       display: none !important;
     }
-  
+
     .hs-body-overflow_hide {
       height: 100% !important;
       overflow: hidden !important;
     }
-  
+
     /* #region toggle */
     .hs-dashboard__toggle {
       position: fixed;
@@ -489,7 +508,7 @@
       top: 15px;
       right: 5px;
     }
-  
+
     .hs-dashboard__toggle-item {
       position: relative;
       width: 28px;
@@ -506,12 +525,12 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-  
+
     .hs-dashboard__toggle-item:hover {
       border-color: #aaa;
       color: #111;
     }
-  
+
     .hs-dashboard__toggle-icon svg{
       position: absolute;
       top: 50%;
@@ -521,7 +540,7 @@
       font-style: normal !important;
     }
     /* #endregion toggle */
-  
+
     /* #region wrapper */
     .hs-dashboard__wrapper {
       position: fixed;
@@ -534,28 +553,28 @@
       background-color: #fff;
       font-size: var(--hs-font-size-base);
     }
-  
+
     .hs-dashboard__wrapper::-webkit-scrollbar {
       width: 8px;
       height: 6px;
       background: rgba(0, 0, 0, 0.1);
     }
-  
+
     .hs-dashboard__wrapper::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.3);
     }
-  
+
     .hs-dashboard__wrapper::-webkit-scrollbar-track {
       background: rgba(0, 0, 0, 0.1);
     }
     /* #endregion wrapper */
-  
+
     .hs-dashboard__header {
       position: relative;
       padding-top: 10px;
       text-align: center;
     }
-  
+
     .hs-dashboard__header .hs-dashboard__title {
       margin: 0;
       padding-top: 10px;
@@ -563,7 +582,7 @@
       font-size: 1em;
       font-weight: normal;
     }
-  
+
     /* #region theme */
     .hs-theme-switch {
       display: flex;
@@ -578,7 +597,7 @@
       -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
-  
+
     .hs-theme-switch {
       width: 50px;
       height: 24px;
@@ -587,13 +606,13 @@
       background-color: #4d4d4d;
       transition: all 0.2s ease;
     }
-  
+
     .hs-dashboard__header .hs-theme-switch {
       position: absolute;
       top: 10px;
       left: 10px;
     }
-  
+
     .hs-theme-switch__style {
       position: relative;
       width: 24px;
@@ -602,14 +621,14 @@
       font-size: 20px;
       text-align: center;
     }
-  
+
     .hs-theme-switch__icon svg {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
-  
+
     .hs-theme-switch__thumb {
       position: absolute;
       top: 1px;
@@ -622,12 +641,12 @@
       box-sizing: border-box;
       transition: all 0.25s ease;
     }
-  
+
     .hs-theme-switch_checked .hs-theme-switch__thumb {
       left: 27px;
       border-color: #4d4d4d;
     }
-  
+
     .hs-toggle-screenreader-only {
       border: 0;
       clip: rect(0 0 0 0);
@@ -639,7 +658,7 @@
       width: 1px;
     }
     /* #endregion theme */
-  
+
     /* #region grid */
     .hs-dashboard__grid {
       display: flex;
@@ -648,28 +667,28 @@
       padding: 0 40px;
       list-style: none;
     }
-  
+
     .hs-dashboard__column {
       padding-right: 10px;
       padding-left: 10px;
     }
-  
+
     .hs-dashboard__column a {
       display: block;
       padding-left: 20px !important;
       padding-right: 40px !important;
       text-decoration: none;
     }
-  
+
     .hs-dashboard__container ul:not(.hs-dashboard__grid) {
       padding: 0;
     }
-  
+
     .hs-dashboard__container li {
       padding-left: 0 !important;
       list-style: none;
     }
-  
+
     .hs-dashboard__column .hs-dashboard__title {
       display: block;
       padding-left: var(--hs-spacing-horizontal) !important;
@@ -677,16 +696,16 @@
       text-align: left;
       margin-top: 10px !important;
     }
-  
+
     .hs-dashboard__column .hs-dashboard__list {
       margin-top: 10px !important;
     }
-  
+
     .hs-dashboard__column .hs-dashboard__list+.hs-dashboard__title {
       margin-top: var(--hs-global-spacing);
       padding-top: var(--hs-global-spacing);
     }
-  
+
     .hs-dashboard__column .hs-dashboard__list .hs-dashboard__item {
       margin: 0 !important;
       padding-left: 0 !important;
@@ -695,18 +714,18 @@
       line-height: var(--item-height);
     }
     /* #endregion grid */
-  
+
     /* #region custom */
     #hs-dashboard.hs-dashboard__wrapper {
       transition: all 0.2s ease;
     }
-  
+
     #hs-dashboard .hs-dashboard__column .hs-dashboard__title {
       font-size: 14px;
       line-height: 1.5715;
       color: rgba(0, 0, 0, 0.45);
     }
-  
+
     #hs-dashboard a {
       overflow: hidden;
       white-space: nowrap;
@@ -716,46 +735,46 @@
       color: rgba(0, 0, 0, 0.85);
       transition: color 0.3s ease;
     }
-  
+
     #hs-dashboard a:hover {
       color: var(--hs-color-primary);
       text-decoration: none;
       outline: 0;
     }
-  
+
     /* light */
     #hs-dashboard.hs-dashboard__wrapper_light {
       color: #161616;
       background-color: #fff;
     }
-  
+
     #hs-dashboard.hs-dashboard__wrapper_light .hs-dashboard__list+.hs-dashboard__title {
       border-top: 1px solid var(--hs-color-gray-300);
     }
-  
+
     /* dark */
     #hs-dashboard.hs-dashboard__wrapper_dark {
       color: #fff;
       background-color: #161616;
     }
-  
+
     #hs-dashboard.hs-dashboard__wrapper_dark .hs-dashboard__list+.hs-dashboard__title {
       border-top: 1px solid var(--hs-color-gray-600);
     }
-  
+
     #hs-dashboard.hs-dashboard__wrapper_dark .hs-dashboard__title {
       font-weight: bold;
       color: #fff;
     }
-  
+
     #hs-dashboard.hs-dashboard__wrapper_dark a {
       color: #fff;
     }
-  
+
     #hs-dashboard.hs-dashboard__wrapper_dark a:hover {
       color: var(--hs-color-primary);
     }
-  
+
     #hs-dashboard .hs-dashboard__item.active,
     #hs-dashboard .hs-dashboard__item.active a,
     #hs-dashboard .hs-dashboard__item .active,
@@ -763,15 +782,15 @@
     #hs-dashboard .hs-dashboard__item.hs-active a {
       color: var(--hs-color-primary);
     }
-  
+
     #hs-dashboard .hs-dashboard__item.hs-active {
       background-color: #e6f7ff;
     }
-  
+
     #hs-dashboard .hs-dashboard__item {
       position: relative;
     }
-  
+
     #hs-dashboard .hs-dashboard__item::after {
       content: ' ';
       position: absolute;
@@ -785,7 +804,7 @@
         -webkit-transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
       opacity: 0;
     }
-  
+
     #hs-dashboard .hs-dashboard__item.hs-active::after {
       transform: scaleY(1);
       opacity: 1;
@@ -794,60 +813,61 @@
         -webkit-transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
     /* #endregion custom */
-  
+
   .hs-toc__wrapper {
       position: fixed;
-      right: 74px;
-      top: 10px;
-      bottom: 10px;
+      right: 68px;
+      top: 24px;
+      bottom: 24px;
       padding: 2px;
       z-index: 9999;
       box-sizing: border-box;
   }
-  
+
   .hs-toc__list {
       padding: 10px;
       margin: 0;
       background-color: #fff;
       box-shadow: 0px 0px 2px rgb(0 0 0 / 20%);
       overflow-y: auto;
+      min-width: 200px;
       max-height: 100%;
       box-sizing: border-box;
   }
-  
+
   .hs-toc__list::-webkit-scrollbar {
       width: 8px;
       height: 8px;
   }
-  
+
   .hs-toc__list::-webkit-scrollbar-thumb {
       /*! autoprefixer: off */
       background: rgba(183, 185, 190, 0.6);
       border-radius: 4px;
   }
-  
+
   .hs-toc__list::-webkit-scrollbar-track {
       /*! autoprefixer: off */
       background: rgba(192, 192, 192, 0.2);
   }
-  
-  
+
+
   .hs-toc__item {
       padding: .3em 1em;
       font-size: 14px;
       list-style: none;
   }
-  
+
   .hs-toc__item::marker {
       display: none;
   }
-  
+
   .hs-toc__item a {
       color: #444;
       text-decoration: none;
   }
-  
-  
+
+
     `;
   }
   // #endregion STYLE
@@ -1105,7 +1125,7 @@
       if (tagName === 'a') {
         const timer = setInterval(() => {
           handler(timer);
-        }, 500);
+        }, 200);
       }
     }
 

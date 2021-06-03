@@ -9,13 +9,21 @@
 
 之后访问 [Element](https://element.eleme.cn/#/zh-CN/component) 官网体验。
 
+## Shortcuts
+
+- `Tab` - 切换 Dashboard 面板 / Toggle the Dashboard
+- `F1` - 跳至 API 章节 / Go to *API*
+
 ## Screenshots
 
-![无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-light.png)
+![TOC - 无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-toc.png)
 
-![无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-dark.png)
+![Dashboard - 无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-light.png)
+
+![Dashboard - 无法访问 raw.githubusercontent.com](https://raw.githubusercontent.com/caringrun/assets/master/element-ui-components-dashboard-v2-dark.png)
 
 预览回滚：[light](https://i.loli.net/2020/07/24/qlsOUZ3GhHtyxpd.png), [dark](https://i.loli.net/2020/07/24/Q1CeA9SNq5TknmU.png)
+, [TOC](https://i.loli.net/2021/06/03/eBKTdAYaR89riJI.png)
 
 ---
 
